@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+
+    .blockField {
+        width:1200px;
+        height: 300px;
+        padding: 10px;
+        position: relative;
+        box-sizing: border-box;
+        border: 2px solid grey;
+    }
+    .blockCenter {
+        width: 400px;
+        height: 275px;
+        margin: 0 auto;
+        border: 2px solid black;
+    }
+    .blockPositionFirst {
+        width: 180px;
+        height: 280px;
+        display: flex;
+        position: absolute;
+        left: 200px;
+        flex-direction: column-reverse;
+        background: blue;
+    }
+    .blockPositionSecond {
+        width: 180px;
+        height: 280px;
+        display: flex;
+        flex-direction: column-reverse;
+        position: absolute;
+        left: 810px;
+        background:green;
+    }
+
+    .moveRightLong {
+        position: absolute;
+        animation: r_long 2s ease-out forwards;
+    }
+    @keyframes r_long {
+        0% {
+            left: 200px;
+        }
+        100% {
+            left: 1000px;
+            background: red;
+        }
+    }
+    .moveRightShot {
+        position: absolute;
+        animation: r_shot 2s ease-out forwards;
+    }
+    @keyframes r_shot {
+        0% {
+            left: 200px;
+        }
+        100% {
+            left: 810px;
+            background: red;
+        }
+    }
+    .moveLeftShort {
+        position: absolute;
+        animation: l_shot 2s ease-out forwards;
+    }
+    @keyframes l_shot {
+        0% {
+            left: 810px;
+        }
+        100% {
+            left: 200px;
+            background: yellow;
+        }
+    }
+    .moveLeftLong {
+        position: absolute;
+        animation: l_long 2s ease-out forwards;
+    }
+    @keyframes l_long {
+        0% {
+            left: 810px;
+        }
+        100% {
+            left: 10px;
+            background: yellow;
+        }
+    }
+
+    .button {
+        width: 180px;
+        height: 50px;
+        background-image: url(arrow.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .buttonOne {
+        width: 180px;
+        height: 50px;
+        background-image: url(left.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    
+    
+    </style>
+    
+    <script src="main.js"></script>
+</body>
+</html>

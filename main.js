@@ -1,44 +1,124 @@
-const body = document.querySelector('body');
+const wrapper = document.querySelector('.wrapper');
 
-const blockField = document.createElement('div');
-blockField.classList.add('blockField');
-body.appendChild(blockField);
+wrapper.addEventListener('click', (ev) => {
+    const moveElement = ev.target.classList;
+    let positionRight = document.querySelector('.right');
+    let positionLeft = document.querySelector('.left');
+    let positionRight2 = document.querySelector('.right2');
+    let positionLeft2 = document.querySelector('.left2');
 
-const blockPositionFirst = document.createElement('div');
-blockPositionFirst.classList.add('blockPositionFirst');
-blockField.appendChild(blockPositionFirst);
-const button = document.createElement('button');
-button.classList.add('button');
-blockPositionFirst.appendChild(button);
+    if (!ev.target.classList.contains('live-block')){
+        return
+    } 
 
-const blockPositionSecond = document.createElement('div');
-blockPositionSecond.classList.add('blockPositionSecond');
-blockField.appendChild(blockPositionSecond);
-
-const buttonOne = document.createElement('button');
-buttonOne.classList.add('buttonOne');
-blockPositionSecond.appendChild(buttonOne);
-
-const blockCenter = document.createElement('div');
-blockCenter.classList.add('blockCenter');
-blockField.appendChild(blockCenter);
-
-
-button.addEventListener('click', (e) => {
-    if (blockPositionSecond.offsetLeft === 810 ) {
-        blockPositionFirst.classList.add('moveRightLong');
-        button.style.transform = 'rotate(180deg)';
-    } else {
-        blockPositionFirst.classList.add('moveRightShot');
-        button.style.transform = 'rotate(180deg)';
+    if (moveElement.contains('left')){
+        if (positionLeft2 !== null){
+            moveElement.add('right');
+            moveElement.remove('left');
+            positionLeft2.classList.add('left');
+            positionLeft2.classList.remove('left2');
+        } else {
+            moveElement.add('right2');
+            moveElement.remove('left');
+        }
+    } else if (moveElement.contains('right')) {
+        if (positionRight2 !== null ){
+            moveElement.add('left');
+            moveElement.remove('right');
+            positionRight2.classList.remove('right2');
+            positionRight2.classList.add('right');
+        } else {
+            moveElement.add('left2');
+            moveElement.remove('right');
+        }  
+    } else if (moveElement.contains('right2')) {
+        if (positionLeft !== null){
+            moveElement.remove('right2');
+            moveElement.add('left');
+        }
+    } else if (moveElement.contains('left2')) {
+        if (positionRight !== null){
+            moveElement.remove('left2');
+            moveElement.add('right');
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 
+//     else if (classR.contains('right')){
+//         classR.add('left2');
+//         classR.remove('right');
+//     }
+
+    // if (moveElement.contains('left')){
+    //     if (positionRight.classList.contains('right')) {
+    //         moveElement.add('right2');
+    //         moveElement.remove('left');
+    //     } else {
+    //         moveElement.add('right');
+    //         moveElement.remove('left');
+    //     }
+    // } else if (moveElement.contains('right') ){
+    //     moveElement.add('left');
+    //     moveElement.remove('right');
+    //     if( positionRight2 !== null ){
+    //         positionRight2.classList.add('right');
+    //         positionRight2.classList.remove('right2');
+    //     } else {
+    //         if(positionLeft !== null){
+    //             moveElement.add('left2');
+    //             moveElement.remove('right');
+    //         }
+    //     }
+    // }  else if (moveElement.contains('right2') ){
+    //     moveElement.add('left');
+    //     moveElement.remove('right2');
+    // }
+
+
+// ----------
+    
+    // else if (classR.contains('right')) {
+
+    //     if (positionLeft.classList.contains('left')) {
+    //         classR.add('left2');
+    //         classR.remove('right');
+    //     } else {
+    //         classR.add('left');
+    //         classR.remove('right');
+    //     }
+    // }
+    // else if (classL.contains('left') && positionLeft2.classList.contains('left2')){
+    //     classL.add('right');
+    //     classL.remove('left');
+    //     positionLeft2.classList.add('left');
+    //     positionLeft2.classList.remove('left2');
+    // }
+    // else if (classR.contains('left2') && positionLeft.classList.contains('left')){
+    //     classR.add('right');
+    //     classR.remove('left2');
+    // }
+
 });
-buttonOne.addEventListener('click', (e) => {
-    if (blockPositionFirst.offsetLeft === 200 ) {
-        blockPositionSecond.classList.add('moveLeftLong');
-        buttonOne.style.transform = 'rotate(180deg)';
-    } else {
-        blockPositionSecond.classList.add('moveLeftShort');
-        buttonOne.style.transform = 'rotate(180deg)';
-    }
-});
+

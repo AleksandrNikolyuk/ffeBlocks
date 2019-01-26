@@ -7,113 +7,89 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="wrapper">
+        <div class="live-block left"></div>
+        <div class="center">
+                <div class="live-block left"></div> 
+                <div class="live-block right"></div>
+        </div>
+        <div class="live-block right"></div>
+    </div>
+
     <style>
+        .wrapper {
+            margin: 50px auto;
+            display: flex;
+            background-color: #eee;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+        }
+        .center {
+            background-color: green;
+            width: 150px;
+            height: 400px;
+            margin: 0 20px;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
 
-    .blockField {
-        width:1200px;
-        height: 300px;
-        padding: 10px;
-        position: relative;
-        box-sizing: border-box;
-        border: 2px solid grey;
-    }
-    .blockCenter {
-        width: 400px;
-        height: 275px;
-        margin: 0 auto;
-        border: 2px solid black;
-    }
-    .blockPositionFirst {
-        width: 180px;
-        height: 280px;
-        display: flex;
-        position: absolute;
-        left: 200px;
-        flex-direction: column-reverse;
-        background: blue;
-    }
-    .blockPositionSecond {
-        width: 180px;
-        height: 280px;
-        display: flex;
-        flex-direction: column-reverse;
-        position: absolute;
-        left: 810px;
-        background:green;
-    }
+        .center>.live-block {
+            z-index: 3;
+            transition: left 4s;
+        }
 
-    .moveRightLong {
-        position: absolute;
-        animation: r_long 2s ease-out forwards;
-    }
-    @keyframes r_long {
-        0% {
-            left: 200px;
+        .live-block {
+            width: 75px;
+            height: 200px;
+            background-color: #333;
+            position: absolute;
+            top: 50%;
+            transform: translateY( -50%); 
+            /* transition-property: left,  backgound-color;
+            transition-duration: 50s, 2s; */
+            /* transition-delay: 0 .5s; */
+            transition: left 4s, background-color .2ms .9s;
         }
-        100% {
-            left: 1000px;
-            background: red;
-        }
-    }
-    .moveRightShot {
-        position: absolute;
-        animation: r_shot 2s ease-out forwards;
-    }
-    @keyframes r_shot {
-        0% {
-            left: 200px;
-        }
-        100% {
-            left: 810px;
-            background: red;
-        }
-    }
-    .moveLeftShort {
-        position: absolute;
-        animation: l_shot 2s ease-out forwards;
-    }
-    @keyframes l_shot {
-        0% {
-            left: 810px;
-        }
-        100% {
-            left: 200px;
-            background: yellow;
-        }
-    }
-    .moveLeftLong {
-        position: absolute;
-        animation: l_long 2s ease-out forwards;
-    }
-    @keyframes l_long {
-        0% {
-            left: 810px;
-        }
-        100% {
-            left: 10px;
-            background: yellow;
-        }
-    }
 
-    .button {
-        width: 180px;
-        height: 50px;
-        background-image: url(arrow.svg);
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-    .buttonOne {
-        width: 180px;
-        height: 50px;
-        background-image: url(left.svg);
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
+        .live-block::after { 
+            content: '==>';
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-    
-    
+        .live-block.left {
+            left: calc(50% - 190px);
+            background-color: blue;
+        }
+
+        .live-block.left2 {
+            left: calc(50% - 310px);
+            background-color: blue;
+        }
+
+        .live-block.right {
+            left: calc(50% + 120px);
+            background-color: red;
+        }
+
+        .live-block.right2 {
+            left: calc(50% + 235px);
+            background-color: red;
+        }
+
+        .live-block.right::after,
+        .live-block.right2::after {
+            content: '<==';
+        }
     </style>
-    
+
+
     <script src="main.js"></script>
 </body>
 </html>
